@@ -23,7 +23,7 @@ val networkModule =  module {
     single {
         Retrofit.Builder()
             .client(get<OkHttpClient>())
-            .baseUrl("https://newsapi.org/v2")
+            .baseUrl("https://newsapi.org/v2/")
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(CoroutinesResponseCallAdapterFactory.create())
             .build()

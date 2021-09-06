@@ -8,6 +8,6 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 @Entity
 data class Source(
-    @PrimaryKey val id: String?,
-    val name: String?
+    @PrimaryKey val id:String,
+    val name: String
 ):Parcelable

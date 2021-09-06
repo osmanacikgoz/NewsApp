@@ -7,7 +7,7 @@ import retrofit2.http.Query
 
 interface NewsServices {
 
-    @GET("v2/everything")
+    @GET("everything")
     suspend fun getNews(
         @Query("q") team:String,
         @Query("page") page:Int

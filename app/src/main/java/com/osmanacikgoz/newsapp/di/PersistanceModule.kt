@@ -7,7 +7,9 @@ import org.koin.dsl.module
 
 val persistenceModule  = module {
     single {
-        Room.databaseBuilder(androidApplication(), AppDataBase::class.java,"NewsApp.db")
+        Room.databaseBuilder(androidApplication(), AppDataBase::class.java,"NewsApp.db").build()
 
     }
+
+    single { get<AppDataBase>().newsDao() }
 }
