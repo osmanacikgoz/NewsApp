@@ -1,53 +1,62 @@
 package com.osmanacikgoz.newsapp.view.ui
 
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.osmanacikgoz.newsapp.R
 import com.osmanacikgoz.newsapp.databinding.ActivityNewsListBinding
+import com.osmanacikgoz.newsapp.enums.HomePageType
+import com.osmanacikgoz.newsapp.extension.showFragment
 import com.osmanacikgoz.newsapp.view.ui.favorite.FavoriteFragment
 import com.osmanacikgoz.newsapp.view.ui.news.NewsFragment
 import com.osmanacikgoz.newsapp.view.ui.news.NewsViewModel
-import kotlinx.coroutines.flow.collect
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class NewsListActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityNewsListBinding
 
-    private val viewModel:NewsViewModel by viewModel()
+    // Fragments
+    private var newsFragment: Fragment? = null
+    private var favoriteNewsFragment: Fragment? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_news_list)
 
-        val newsFragment = NewsFragment()
-        val favoriteFragment = FavoriteFragment()
-        setCurrentFragment(newsFragment)
-        val navbar = findViewById<BottomNavigationView>(R.id.bottomNavBar)
-       /* viewModel.newsLiveData.observe(this){
+        initializedUI()
+        setNavBarItemSelectedListener()
+    }
 
-        }
-
-        */
-        navbar.setOnNavigationItemSelectedListener {
+    private fun setNavBarItemSelectedListener() {
+        binding.bottomNavBar.setOnItemSelectedListener {
             when (it.itemId) {
-                R.id.home -> setCurrentFragment(newsFragment)
-                R.id.favorite -> setCurrentFragment(favoriteFragment)
+                R.id.news -> {
+                    setCurrentFragment(HomePageType.NEWS_PAGE)
+                }
+                R.id.favorite -> {
+                    setCurrentFragment(HomePageType.FAVORITE_NEWS_PAGE)
+                }
             }
             true
         }
-
     }
 
-    private fun setCurrentFragment(fragment: Fragment) {
-        supportFragmentManager.beginTransaction().apply {
-            replace(R.id.fragmentContainer, fragment)
-            commit()
+    private fun initializedUI() {
+        setCurrentFragment(HomePageType.NEWS_PAGE)
+    }
+
+    private fun setCurrentFragment(homePageType: HomePageType) {
+        val selectedFragment = when (homePageType) {
+            HomePageType.NEWS_PAGE -> {
+                newsFragment ?: NewsFragment()
+            }
+            HomePageType.FAVORITE_NEWS_PAGE -> {
+                favoriteNewsFragment ?: FavoriteFragment()
+            }
         }
+
+        showFragment(R.id.fragmentContainer, selectedFragment)
     }
 }

@@ -8,7 +8,7 @@ import kotlinx.parcelize.Parcelize
 import kotlinx.parcelize.RawValue
 
 @Parcelize
-@Entity
+@Entity(tableName = "News")
 data class Article(
    @SerializedName("source")
     val source: Source?,

@@ -17,7 +17,6 @@ class NewsApplication:Application() {
             androidContext(this@NewsApplication)
             modules(networkModule)
             modules(persistenceModule)
-            modules(repositoryModule)
             modules(viewModels)
 
         }

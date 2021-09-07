@@ -1,27 +1,32 @@
 package com.osmanacikgoz.newsapp.view.ui.news
 
-import androidx.databinding.ObservableBoolean
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.asFlow
-import androidx.lifecycle.switchMap
+import androidx.lifecycle.viewModelScope
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
+import androidx.paging.cachedIn
+import com.osmanacikgoz.newsapp.api.Api
+import com.osmanacikgoz.newsapp.api.NewsServices
 import com.osmanacikgoz.newsapp.base.DispatchViewModel
+import com.osmanacikgoz.newsapp.datasource.NewsDataSource
 import com.osmanacikgoz.newsapp.model.entity.Article
-import com.osmanacikgoz.newsapp.repository.NewsRepository
 import kotlinx.coroutines.flow.Flow
 import timber.log.Timber
 
 class NewsViewModel constructor(
-    private val newsRepository: NewsRepository
+    private val newsServices: NewsServices
 ) : DispatchViewModel() {
 
-    private val newsIdLiveData :MutableLiveData<Int> = MutableLiveData()
-    val newsLiveData: LiveData<List<Article>> = newsRepository.loadNews()
-
-    var isNewsLoading: ObservableBoolean = ObservableBoolean(false)
+    private val _newsLiveData: MutableLiveData<Int> = MutableLiveData()
 
     init {
         Timber.d("Injection:NewsViewModel")
+    }
 
+    fun searchNews(searchParam: String): Flow<PagingData<Article>> {
+        return Pager(PagingConfig(pageSize = Api.CONST_PAGE)) {
+            NewsDataSource(newsServices, searchParam)
+        }.flow.cachedIn(viewModelScope)
     }
 }

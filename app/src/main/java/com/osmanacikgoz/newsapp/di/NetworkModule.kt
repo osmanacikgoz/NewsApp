@@ -1,6 +1,7 @@
 package com.osmanacikgoz.newsapp.di
 
 import com.facebook.stetho.okhttp3.StethoInterceptor
+import com.osmanacikgoz.newsapp.api.Api
 import com.osmanacikgoz.newsapp.api.NewsServices
 import com.osmanacikgoz.newsapp.api.RequestInterceptor
 import com.skydoves.sandwich.coroutines.CoroutinesResponseCallAdapter
@@ -22,10 +23,9 @@ val networkModule =  module {
 
     single {
         Retrofit.Builder()
-            .client(get<OkHttpClient>())
-            .baseUrl("https://newsapi.org/v2/")
+            .client(get())
+            .baseUrl(Api.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
-            .addCallAdapterFactory(CoroutinesResponseCallAdapterFactory.create())
             .build()
     }
 

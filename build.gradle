@@ -61,6 +61,9 @@ buildscript {
         // debugging
         timberVersion = '4.7.1'
         stethoVersion = '1.5.1'
+        //
+        pagingVersion ='3.0.0-alpha04'
+
     }
     dependencies {
         classpath "com.android.tools.build:gradle:7.0.2"

@@ -2,28 +2,54 @@ package com.osmanacikgoz.newsapp.view.ui.news
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.paging.PagingDataAdapter
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.osmanacikgoz.newsapp.databinding.NewsItemBinding
+import com.bumptech.glide.Glide
+import com.osmanacikgoz.newsapp.databinding.RowNewsBinding
 import com.osmanacikgoz.newsapp.model.entity.Article
 
-class NewsAdapter(var newsList: List<Article>, private val onItemClickListener: (Int) -> Unit) :
-    RecyclerView.Adapter<NewsAdapter.NewsHolder>() {
+class NewsAdapter(
+   private val setOnClickListener:(article:Article, position:Int) -> Unit
+) :
+    PagingDataAdapter<Article,NewsAdapter.NewsHolder>(NewsDiffCallback) {
 
-    private val items: MutableList<Article> = arrayListOf()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsAdapter.NewsHolder {
-        val binding: NewsItemBinding =
-            NewsItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding: RowNewsBinding =
+            RowNewsBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return NewsHolder(binding)
     }
 
     override fun onBindViewHolder(holder: NewsHolder, position: Int) {
-        with(holder.binding) {
-            //newsList = items[position]
+        val news = getItem(position)
 
+        holder.binding?.run {
+            news?.let { mNews ->
+                newsTitle.text = mNews.title ?: ""
+                newsDescription.text = mNews.description ?: ""
+
+                Glide.with(holder.itemView)
+                    .load(mNews.urlToImage)
+                    .into(newsPoster)
+
+                root.setOnClickListener {
+                    setOnClickListener.invoke(mNews,position)
+                }
+
+            }
         }
     }
 
-    override fun getItemCount(): Int = items.size
+    class NewsHolder(val binding: RowNewsBinding) : RecyclerView.ViewHolder(binding.root)
 
-    class NewsHolder(val binding: NewsItemBinding) : RecyclerView.ViewHolder(binding.root)
-}
+    object NewsDiffCallback:DiffUtil.ItemCallback<Article>() {
+        override fun areItemsTheSame(oldItem: Article, newItem: Article): Boolean {
+            return oldItem.title ==newItem.title
+        }
+
+        override fun areContentsTheSame(oldItem: Article, newItem: Article): Boolean {
+            return oldItem == newItem
+        }
+
+    }
+    }

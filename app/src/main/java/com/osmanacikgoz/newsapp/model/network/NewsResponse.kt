@@ -6,5 +6,5 @@ import com.osmanacikgoz.newsapp.model.entity.Article
 data class NewsResponse(
     val status: String?,
     val totalResults: Int?,
-    val articles: List<Article>
+    val articles: List<Article>?
 )
