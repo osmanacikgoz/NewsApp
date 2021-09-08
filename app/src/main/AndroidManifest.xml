@@ -13,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NewsApp">
         <activity
+            android:name=".view.ui.WebViewActivity"
+            android:exported="true" />
+        <activity
             android:name=".view.ui.NewsListActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustPan">
@@ -22,7 +25,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".view.ui.news.detail.NewsDetailActivity"
             android:screenOrientation="portrait" />

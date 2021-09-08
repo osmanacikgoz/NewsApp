@@ -47,13 +47,11 @@ class NewsFragment : Fragment() {
 
             }
         }
-
-
     }
 
     private fun initializeUI() {
         setupList()
-        setupView("besiktas")
+        setupView("bitcoin")
     }
 
     private fun setupList() {

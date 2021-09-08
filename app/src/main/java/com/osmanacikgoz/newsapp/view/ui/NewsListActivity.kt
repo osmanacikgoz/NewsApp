@@ -10,8 +10,6 @@ import com.osmanacikgoz.newsapp.enums.HomePageType
 import com.osmanacikgoz.newsapp.extension.showFragment
 import com.osmanacikgoz.newsapp.view.ui.favorite.FavoriteFragment
 import com.osmanacikgoz.newsapp.view.ui.news.NewsFragment
-import com.osmanacikgoz.newsapp.view.ui.news.NewsViewModel
-import org.koin.android.viewmodel.ext.android.viewModel
 
 class NewsListActivity : AppCompatActivity() {
 
@@ -20,6 +18,8 @@ class NewsListActivity : AppCompatActivity() {
     // Fragments
     private var newsFragment: Fragment? = null
     private var favoriteNewsFragment: Fragment? = null
+
+    private val fragmentList = ArrayList<Fragment>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,5 +58,13 @@ class NewsListActivity : AppCompatActivity() {
         }
 
         showFragment(R.id.fragmentContainer, selectedFragment)
+    }
+
+    override fun onBackPressed() {
+        if (supportFragmentManager.backStackEntryCount == 1) {
+            finish()
+        } else {
+            super.onBackPressed()
+        }
     }
 }

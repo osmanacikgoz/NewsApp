@@ -5,8 +5,8 @@ import com.osmanacikgoz.newsapp.model.entity.Source
 
 class NewsConverter {
     @TypeConverter
-    fun fromSource(source: Source): String {
-        return source.name
+    fun fromSource(source: Source?): String {
+        return source?.name ?: ""
     }
 
     @TypeConverter

@@ -6,4 +6,5 @@ object Api {
     const val CONST_PAGE = 9
 
     const val DETAIL_ARTICLE = "detail_article"
+    const val WEBVIEW_SOURCE_URL = "webview_source_url"
 }

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
+
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
@@ -10,135 +11,134 @@
         android:focusable="true">
 
         <ImageView
+            android:id="@+id/ivBack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/ivArrow"
+            android:layout_margin="8dp"
             android:src="@drawable/ic_baseline_arrow_back_ios_new_24"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_margin="8dp"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:id="@+id/tvDetailTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/tvDetailTitle"
+            android:layout_margin="8dp"
             android:text="News App"
             android:textColor="@color/black"
-            android:textStyle="bold"
             android:textSize="24sp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toEndOf="@id/ivArrow"
+            android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@id/ivFavorite"
-            android:layout_margin="8dp"/>
+            app:layout_constraintStart_toEndOf="@id/ivBack"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
+            android:id="@+id/ivShare"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/ivUpgrade"
+            android:layout_margin="8dp"
             android:src="@drawable/ic_baseline_upgrade_24"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toStartOf="@id/ivFavorite"
-            android:layout_margin="8dp"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
+            android:id="@+id/ivFavorite"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/ivFavorite"
+            android:layout_margin="8dp"
             android:src="@drawable/ic_baseline_favorite_border_24"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_margin="8dp"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
+            android:id="@+id/ivDetailPoster"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:id="@+id/ivDetailPoster"
-            android:scaleType="centerCrop"
             android:layout_marginTop="16dp"
-            app:layout_constraintTop_toBottomOf="@id/tvDetailTitle"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintTop_toBottomOf="@id/tvDetailTitle" />
 
         <TextView
+            android:id="@+id/tvNewsTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/tvNewsTitle"
-            app:layout_constraintTop_toBottomOf="@id/ivDetailPoster"
-            android:textSize="24sp"
-            android:textColor="@color/black"
-            tools:text="Title"
+            android:paddingStart="12dp"
             android:textAlignment="gravity"
-            android:paddingStart="12dp"/>
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            app:layout_constraintTop_toBottomOf="@id/ivDetailPoster"
+            tools:text="Title" />
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:id="@+id/ivSource"
-            android:src="@drawable/ic_baseline_source_24"
-            app:layout_constraintTop_toBottomOf="@id/tvNewsTitle"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_margin="36dp"/>
-        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/tvSource"
-            tools:text="Source"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-            app:layout_constraintTop_toBottomOf="@id/tvNewsTitle"
             android:layout_margin="36dp"
-            app:layout_constraintStart_toEndOf="@id/ivSource"/>
+            android:src="@drawable/ic_baseline_source_24"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvNewsTitle" />
+
+        <TextView
+            android:id="@+id/tvSource"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="36dp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/ivSource"
+            app:layout_constraintTop_toBottomOf="@id/tvNewsTitle"
+            tools:text="Source" />
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:id="@+id/ivCalendar"
-            android:src="@drawable/ic_baseline_calendar_today_24"
-            app:layout_constraintTop_toBottomOf="@id/tvNewsTitle"
-            app:layout_constraintEnd_toStartOf="@id/tvCalendar"
-            android:layout_margin="36dp"/>
-        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/tvCalendar"
-            tools:text="Calendar"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-            app:layout_constraintTop_toBottomOf="@id/tvNewsTitle"
             android:layout_margin="36dp"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            android:src="@drawable/ic_baseline_calendar_today_24"
+            app:layout_constraintEnd_toStartOf="@id/tvCalendar"
+            app:layout_constraintTop_toBottomOf="@id/tvNewsTitle" />
+
+        <TextView
+            android:id="@+id/tvCalendar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="36dp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvNewsTitle"
+            tools:text="Calendar" />
+
         <androidx.core.widget.NestedScrollView
+            android:id="@+id/nsvDescription"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:id="@+id/nsvDescription"
-            app:layout_constraintTop_toBottomOf="@id/ivSource"
+            android:layout_marginTop="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginTop="16dp">
+            app:layout_constraintTop_toBottomOf="@id/ivSource">
+
             <TextView
+                android:id="@+id/tvDescription"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/tvDescription"
+                android:gravity="start"
                 android:padding="2dp"
-                tools:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged."
-                android:textSize="16sp"
                 android:textColor="@color/black"
-                android:gravity="start"/>
+                android:textSize="16sp"
+                tools:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged." />
         </androidx.core.widget.NestedScrollView>
 
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/mbSource"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/mbSource"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginBottom="24dp"
-            android:text="Sayfaya Git"/>
-
-
-
-
-
+            android:text="Sayfaya Git"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
