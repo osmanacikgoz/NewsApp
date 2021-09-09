@@ -15,6 +15,6 @@ data class Favorites(
     val description: String?,
     val url: String?,
     val urlToImage: String?,
-    val publishedAt: String?,
+    val publishedAt: String? ="",
     val content: String?
 ) : Parcelable

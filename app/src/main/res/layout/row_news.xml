@@ -5,7 +5,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="120dp"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="4dp">
 
@@ -34,7 +34,6 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
                     android:orientation="horizontal">
 
                     <TextView
@@ -51,7 +50,7 @@
                         tools:text="Kaynak" />
 
                     <TextView
-                        android:id="@+id/tvpublished"
+                        android:id="@+id/tvCalendar"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center|left"
@@ -78,11 +77,9 @@
                 android:scaleType="centerCrop"
                 app:shapeAppearance="@style/roundedCornersImageView" />
         </LinearLayout>
-
-
         <View
             android:layout_width="match_parent"
-            android:layout_height="2px"
+            android:layout_height="2dp"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
             android:background="@color/dark_blue"

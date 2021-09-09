@@ -1,4 +1,4 @@
-package com.osmanacikgoz.newsapp.view.ui.news.detail
+package com.osmanacikgoz.newsapp.view.ui.detail
 
 import android.content.Intent
 import android.os.Bundle

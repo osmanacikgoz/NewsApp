@@ -24,9 +24,7 @@ class FavoriteAdapter(private val setOnClickListener: (favorite: Favorites?, pos
             favorite?.let { mFavotite ->
                 newsTitle.text = mFavotite.title
                 newsDescription.text = mFavotite.description ?: ""
-
-                tvpublished.text = mFavotite.publishedAt
-
+                tvCalendar.text = mFavotite.publishedAt?.substring(0,10)
                 Glide.with(holder.itemView)
                     .load(mFavotite.urlToImage)
                     .into(newsPoster)

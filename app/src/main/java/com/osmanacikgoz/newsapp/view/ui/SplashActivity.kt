@@ -1,16 +1,13 @@
-package com.osmanacikgoz.newsapp.view.ui.news
+package com.osmanacikgoz.newsapp.view.ui
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.CountDownTimer
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.lifecycleScope
 import com.osmanacikgoz.newsapp.R
 import com.osmanacikgoz.newsapp.databinding.ActivitySplashBinding
-import com.osmanacikgoz.newsapp.view.ui.NewsListActivity
 import kotlinx.coroutines.delay
-import timber.log.Timber
 
 class SplashActivity : AppCompatActivity() {
 

@@ -26,6 +26,7 @@ class NewsAdapter(
             news?.let { mNews ->
                 newsTitle.text = mNews.title ?: ""
                 newsDescription.text = mNews.author ?: ""
+                tvCalendar.text = mNews.publishedAt?.substring(0,10)
 
                 Glide.with(holder.itemView)
                     .load(mNews.urlToImage)
