@@ -8,7 +8,7 @@ import com.osmanacikgoz.newsapp.di.viewModels
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
-class NewsApplication:Application() {
+class NewsApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()

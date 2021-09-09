@@ -56,8 +56,8 @@ class NewsListActivity : AppCompatActivity() {
                 favoriteNewsFragment ?: FavoriteFragment()
             }
         }
+       showFragment(R.id.fragmentContainer, selectedFragment)
 
-        showFragment(R.id.fragmentContainer, selectedFragment)
     }
 
     override fun onBackPressed() {

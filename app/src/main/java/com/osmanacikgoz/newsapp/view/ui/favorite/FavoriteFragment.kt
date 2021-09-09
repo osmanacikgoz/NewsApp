@@ -20,6 +20,8 @@ class FavoriteFragment : Fragment() {
 
     private var favoriteAdapter: FavoriteAdapter? = null
 
+
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -65,7 +67,7 @@ class FavoriteFragment : Fragment() {
 
     private fun observeFavoriteNews() {
         viewModel.favoriteNewsLiveData.observe(viewLifecycleOwner, { favoriteNewsList ->
-            favoriteAdapter?.setData(favoriteNewsList)
+            favoriteAdapter?.setData(favoriteNewsList.reversed())
         })
     }
 

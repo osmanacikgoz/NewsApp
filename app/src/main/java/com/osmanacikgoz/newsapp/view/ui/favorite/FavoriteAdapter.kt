@@ -22,8 +22,10 @@ class FavoriteAdapter(private val setOnClickListener: (favorite: Favorites?, pos
         val favorite = favorites?.get(position)
         holder.binding.run {
             favorite?.let { mFavotite ->
-                newsTitle.text = mFavotite.title ?: ""
+                newsTitle.text = mFavotite.title
                 newsDescription.text = mFavotite.description ?: ""
+
+                tvpublished.text = mFavotite.publishedAt
 
                 Glide.with(holder.itemView)
                     .load(mFavotite.urlToImage)

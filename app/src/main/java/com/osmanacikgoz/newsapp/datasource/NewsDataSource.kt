@@ -1,8 +1,8 @@
 package com.osmanacikgoz.newsapp.datasource
 
 import androidx.paging.PagingSource
-import com.osmanacikgoz.newsapp.api.Api
 import com.osmanacikgoz.newsapp.api.NewsServices
+import com.osmanacikgoz.newsapp.const.Const
 import com.osmanacikgoz.newsapp.model.entity.Article
 
 class NewsDataSource(
@@ -13,7 +13,7 @@ class NewsDataSource(
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Article> {
         return try {
             val currentLoadingPageKey = params.key ?: 1
-            val response = newsServices.getNews(searchParam, currentLoadingPageKey, Api.CONST_PAGE)
+            val response = newsServices.getNews(searchParam, currentLoadingPageKey, Const.CONST_PAGE)
             val data = response.body()?.articles ?: emptyList()
 
             val prevKey = if (currentLoadingPageKey == 1) null else currentLoadingPageKey - 1

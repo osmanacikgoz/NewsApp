@@ -24,8 +24,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:text="News App"
-            android:textColor="@color/black"
+            android:text="@string/app_name"
+            android:textColor="@color/dark_blue"
             android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@id/ivFavorite"
@@ -54,7 +54,7 @@
             android:id="@+id/ivDetailPoster"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:scaleType="centerCrop"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -64,52 +64,65 @@
             android:id="@+id/tvNewsTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
             android:paddingStart="12dp"
+            android:paddingTop="4dp"
             android:textAlignment="gravity"
-            android:textColor="@color/black"
+            android:textColor="@color/dark_blue"
             android:textSize="24sp"
             app:layout_constraintTop_toBottomOf="@id/ivDetailPoster"
             tools:text="Title" />
 
-        <ImageView
-            android:id="@+id/ivSource"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="36dp"
-            android:src="@drawable/ic_baseline_source_24"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvNewsTitle" />
+        <LinearLayout
+            android:id="@+id/llSource"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toTopOf="@id/nsvDescription"
+            app:layout_constraintTop_toBottomOf="@id/tvNewsTitle">
 
-        <TextView
-            android:id="@+id/tvSource"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="36dp"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@id/ivSource"
-            app:layout_constraintTop_toBottomOf="@id/tvNewsTitle"
-            tools:text="Source" />
+            <ImageView
+                android:id="@+id/ivSource"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|left"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="12dp"
+                android:src="@drawable/ic_baseline_source_24" />
 
-        <ImageView
-            android:id="@+id/ivCalendar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="36dp"
-            android:src="@drawable/ic_baseline_calendar_today_24"
-            app:layout_constraintEnd_toStartOf="@id/tvCalendar"
-            app:layout_constraintTop_toBottomOf="@id/tvNewsTitle" />
+            <TextView
+                android:id="@+id/tvSource"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|left"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="12dp"
+                android:fontFamily="sans-serif-medium"
+                android:textColor="@color/dark_blue"
+                android:textStyle="bold"
+                tools:text="Source" />
 
-        <TextView
-            android:id="@+id/tvCalendar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="36dp"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvNewsTitle"
-            tools:text="Calendar" />
+            <ImageView
+                android:id="@+id/ivCalendar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|left"
+                android:layout_marginStart="72dp"
+                android:layout_marginTop="12dp"
+                android:src="@drawable/ic_baseline_calendar_today_24" />
+
+            <TextView
+                android:id="@+id/tvCalendar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="12dp"
+                android:layout_gravity="center|left"
+                android:fontFamily="sans-serif-medium"
+                android:textColor="@color/dark_blue"
+                android:textStyle="bold"
+                tools:text="Calendar" />
+        </LinearLayout>
 
         <androidx.core.widget.NestedScrollView
             android:id="@+id/nsvDescription"
@@ -117,15 +130,16 @@
             android:layout_height="0dp"
             android:layout_marginTop="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/ivSource">
+            app:layout_constraintTop_toBottomOf="@id/llSource">
 
             <TextView
                 android:id="@+id/tvDescription"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:fontFamily="sans-serif-medium"
                 android:gravity="start"
-                android:padding="2dp"
-                android:textColor="@color/black"
+                android:padding="8dp"
+                android:textColor="@color/dark_blue"
                 android:textSize="16sp"
                 tools:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged." />
         </androidx.core.widget.NestedScrollView>
@@ -135,7 +149,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
-            android:text="Sayfaya Git"
+            android:text="@string/buttonText"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

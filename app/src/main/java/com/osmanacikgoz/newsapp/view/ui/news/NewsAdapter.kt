@@ -13,7 +13,6 @@ class NewsAdapter(
     private val setOnClickListener: (article: Article, position: Int) -> Unit
 ) :
     PagingDataAdapter<Article, NewsAdapter.NewsHolder>(NewsDiffCallback) {
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsHolder {
         val binding: RowNewsBinding =
             RowNewsBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -26,7 +25,7 @@ class NewsAdapter(
         holder.binding.run {
             news?.let { mNews ->
                 newsTitle.text = mNews.title ?: ""
-                newsDescription.text = mNews.description ?: ""
+                newsDescription.text = mNews.author ?: ""
 
                 Glide.with(holder.itemView)
                     .load(mNews.urlToImage)
@@ -41,6 +40,7 @@ class NewsAdapter(
     }
 
     class NewsHolder(val binding: RowNewsBinding) : RecyclerView.ViewHolder(binding.root)
+
 
     object NewsDiffCallback : DiffUtil.ItemCallback<Article>() {
         override fun areItemsTheSame(oldItem: Article, newItem: Article): Boolean {

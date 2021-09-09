@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.osmanacikgoz.newsapp.R
-import com.osmanacikgoz.newsapp.api.Api
+import com.osmanacikgoz.newsapp.const.Const
 import com.osmanacikgoz.newsapp.databinding.ActivityWebViewBinding
 
 class WebViewActivity : AppCompatActivity() {
@@ -27,7 +27,7 @@ class WebViewActivity : AppCompatActivity() {
     }
 
     private fun getIntentData() {
-        sourceNewsUrl = intent.getStringExtra(Api.WEBVIEW_SOURCE_URL) as? String
+        sourceNewsUrl = intent.getStringExtra(Const.WEBVIEW_SOURCE_URL) as? String
     }
 
 }

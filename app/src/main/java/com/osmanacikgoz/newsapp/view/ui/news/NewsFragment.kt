@@ -9,6 +9,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.osmanacikgoz.newsapp.R
+import com.osmanacikgoz.newsapp.const.Const
 import com.osmanacikgoz.newsapp.databinding.FragementNewsBinding
 import com.osmanacikgoz.newsapp.extension.navigateToDetailActivity
 import com.osmanacikgoz.newsapp.model.entity.Article
@@ -43,22 +44,26 @@ class NewsFragment : Fragment() {
         initializeUI()
 
         binding.edtNewsSearch.addTextChangedListener {
-            it.toString().let { searchParam ->
-
+            it?.toString()?.let { searchParam ->
+                setupView(searchParam)
             }
         }
+
     }
 
     private fun initializeUI() {
         setupList()
-        setupView("bitcoin")
+        setupView(Const.CONST_Q)
+        viewModel.searchNews("Beşiktaş")
     }
 
     private fun setupList() {
         newsAdapter = NewsAdapter { article, _ ->
             navigateToDetail(article)
+
         }
         binding.rvNews.adapter = newsAdapter
+
     }
 
     private fun setupView(searchParam: String = "") {
@@ -68,6 +73,7 @@ class NewsFragment : Fragment() {
             }
         }
     }
+
 
     private fun navigateToDetail(article: Article?) {
         article?.let {

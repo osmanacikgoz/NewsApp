@@ -116,4 +116,11 @@ dependencies {
     //Paging
     implementation "androidx.paging:paging-runtime-ktx:$pagingVersion"
     implementation "androidx.paging:paging-runtime-ktx:$pagingVersion"
+
+    //Lottie
+    implementation "com.airbnb.android:lottie:$lottieVersion"
+
+    //Gif Animation
+    implementation "pl.droidsonroids.gif:android-gif-drawable:$gifVersion"
+
 }

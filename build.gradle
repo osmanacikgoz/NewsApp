@@ -61,8 +61,14 @@ buildscript {
         // debugging
         timberVersion = '4.7.1'
         stethoVersion = '1.5.1'
-        //
+
+        //paging
         pagingVersion ='3.0.0-alpha04'
+
+        //Lottie
+        lottieVersion ='4.1.0'
+
+        gifVersion='1.2.22'
 
     }
     dependencies {

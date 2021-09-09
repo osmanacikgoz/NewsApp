@@ -8,7 +8,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
 import com.osmanacikgoz.newsapp.R
-import com.osmanacikgoz.newsapp.api.Api
+import com.osmanacikgoz.newsapp.const.Const
 import com.osmanacikgoz.newsapp.databinding.ActivityNewsDetailBinding
 import com.osmanacikgoz.newsapp.extension.sharePlainText
 import com.osmanacikgoz.newsapp.model.entity.Article
@@ -18,6 +18,7 @@ import com.osmanacikgoz.newsapp.view.ui.WebViewActivity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
+import java.util.*
 
 class NewsDetailActivity : AppCompatActivity() {
 
@@ -38,11 +39,15 @@ class NewsDetailActivity : AppCompatActivity() {
     private fun initializeUI() {
         with(binding) {
             article?.let {
-                tvDescription.text = it.description
 
+                tvDescription.text = it.description
+                tvNewsTitle.text = it.title
+                tvSource.text = it.author
+                tvCalendar.text = it.publishedAt?.substring(0, 10)
                 Glide.with(this@NewsDetailActivity)
                     .load(it.urlToImage)
                     .into(ivDetailPoster)
+
 
             }
             setFavoriteState()
@@ -62,7 +67,7 @@ class NewsDetailActivity : AppCompatActivity() {
 
             mbSource.setOnClickListener {
                 val intent = Intent(applicationContext, WebViewActivity::class.java)
-                intent.putExtra(Api.WEBVIEW_SOURCE_URL, article?.url)
+                intent.putExtra(Const.WEBVIEW_SOURCE_URL, article?.url)
                 startActivity(intent)
             }
 
@@ -123,7 +128,7 @@ class NewsDetailActivity : AppCompatActivity() {
     }
 
     private fun getDataExtra() {
-        article = intent.getParcelableExtra(Api.DETAIL_ARTICLE)
+        article = intent.getParcelableExtra(Const.DETAIL_ARTICLE)
     }
 
 }
